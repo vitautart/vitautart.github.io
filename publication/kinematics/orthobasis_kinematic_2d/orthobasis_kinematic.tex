@@ -1,0 +1,257 @@
+ \documentclass[12pt]{article}
+ \usepackage{mathtext}  
+ \usepackage[T1,T2A]{fontenc}
+ \usepackage[utf8]{inputenc} 
+ \usepackage[english,ukrainian]{babel}
+ \usepackage{tikz}
+ \usepackage{amsmath}
+ \usetikzlibrary{arrows}
+ 
+ \title{Ортобазисний підхід визначення кінематики матеріальної точки на площині} 
+ \date{\today}
+ \author{Віталій Тартачний}
+ 
+ \begin{document}
+ 	\maketitle
+ 	\section*{Опис системи та основні поняття}
+ 	Система (див. \ref{fig:scheme}) складається з двох матеріальних точок 2 та 3, що здійснюють складний рух відносно базового референс-фрейму $(1x_1y_1z_1)$ з базисом $(\hat{\imath}_{1}, \hat{\jmath}_{1}, \hat{k}_{1})$, при чому рух точки 3 залежить від руху точки 2. Характер руху плоский, тому для спрощення виведення та формування кінематичних рівнянь обмежемося набором з двох координат та відповідними одиничними векторами.
+ 	
+ 	Оскільки референс-фрейм $(1x_1y_1z_1)$ базовий, а отже й нерухомий, визначимо основну його характеристику виходячи з нерухомості.
+ 	
+ 	\begin{equation}
+ 	\label {eq:di0}
+ 	\frac{d\hat{\imath}_{1}} {dt}=0 
+ 	\end{equation}
+ 	
+ 	\begin{equation}
+ 	\label {eq:dj0}
+ 	\frac{d\hat{\jmath}_{1}} {dt}=0 
+ 	\end{equation}
+ 	 
+ 	 Введемо також поняття векторного добутку (cross product) для двох 3-вимірних векторів $\vec{a}=0 \hat{\imath}+0 \hat{\jmath} + a_z \hat{k}$  та $\vec{b}=b_x \hat{\imath}+b_y \hat{\jmath} + 0 \hat{k}$ розміщенних в \textbf{\textit{деякому}} референс-фреймі з базисом $(\hat{\imath}, \hat{\jmath}, \hat{k})$. Вибрані напрямки та величини вищенаведених векторів випливають з плоского характеру руху і будуть конкретизовані дальше по тексту. Отже векторний добуток векторів визначається наступним чином.
+ 	 
+ 	 \begin{equation}
+ 	 \label {eq:crossprod}
+ 	 \vec{a} \times \vec{b} = 
+ 	 \begin {vmatrix}
+ 	 \hat{\imath} & \hat{\jmath} & \hat{k} \\
+ 	 0 & 0 & a_z \\
+ 	 b_x & b_y & 0
+ 	 \end{vmatrix}
+ 	 = a_z b_x \hat{\jmath} - a_z b_y \hat{\imath}
+ 	 \end{equation}
+ 	 
+ 	 
+ 	\begin{figure}[ht]
+ 	\centering
+ 	\begin{tikzpicture}
+ 	
+ 	\coordinate (25p) at (6, 6);
+ 	\coordinate (3p) at (5, 9);
+ 	
+ 	\draw [red, arrows = {stealth - stealth}, thick] (0, 10) node[left] {$y_1$} -- (0, 0) -- (10, 0) node[below] {$x_1$};
+ 	\draw [red, arrows = {-triangle 45}] (-0.3, 6) -- (-0.3, 8) node [midway, above, sloped] {$\color{red}\hat{\jmath}_{1}$};
+ 	\draw [red, rotate = -90, arrows = {-triangle 45}] (0.3, 6) -- (0.3, 8) node [midway, below, sloped, rotate=-90] {$\color{red}\hat{\imath}_{1}$};
+ 	
+ 	\draw [blue, rotate = 30] [stealth - stealth] (0, 5) node[left] {$y_4$} -- (0, 0) -- (5, 0) node[above, right] {$x_4$};
+ 	\draw [blue, rotate = 30, arrows = {-triangle 45}] (-0.3, 2) -- (-0.3, 4) node [midway, below] {$\color{blue}\hat{\jmath}_{4}$};
+ 	\draw [blue, rotate = -60, arrows = {-triangle 45}] (0.3, 2.5) -- (0.3, 4.5) node [midway, below] {$\color{blue}\hat{\imath}_{4}$};
+ 	
+ 	\draw [olive, rotate = 30, shift = {(25p)}] [stealth - stealth] (0, 5) node[left] {$y_2$} -- (0, 0) -- (5, 0) node[above] {$x_2$};
+ 	\draw [olive, rotate = 30, shift = {(25p)}, arrows = {-triangle 45}] (-0.3, 2.8) -- (-0.3, 4.8) node [midway, below] {$\color{olive}\hat{\jmath}_{2}$};
+ 	\draw [olive, rotate = -60, shift = {(25p)}, arrows = {-triangle 45}] (0.3, 2.8) -- (0.3, 4.8) node [midway, below] {$\color{olive}\hat{\imath}_{2}$};
+ 	
+ 	\draw [violet, rotate = 60, shift = {(25p)}] [stealth - stealth] (0, 5) node[left] {$y_5$} -- (0, 0) -- (5, 0) node[right] {$x_5$};
+ 	\draw [violet, rotate = 60, shift = {(25p)}, arrows = {-triangle 45}] (-0.3, 2.8) -- (-0.3, 4.8) node [midway, below] {$\color{violet}\hat{\jmath}_{5}$};
+ 	\draw [violet, rotate = -30, shift = {(25p)}, arrows = {-triangle 45}] (0.3, 2.8) -- (0.3, 4.8) node [midway, below] {$\color{violet}\hat{\imath}_{5}$};
+ 	
+ 	\draw [shift = {(2cm, 0cm)}] (0, 0) node [above right] {$\phi_{14}$} [<->] arc [radius=2, start angle=0, end angle = 30]; %angle phi
+ 	\draw [shift={(25p)}] (30:2) node [above, right, shift={(-0.2cm, 0.6cm)}] {$\phi_{25}$} [<->] arc[radius=2, start angle=30, end angle= 60];
+ 	
+ 	\draw [arrows = {-triangle 45}] (0, 0) -- (25p) node [midway, above, sloped] {$\color{red}\vec{r}_{12}, \color{blue}\vec{r}_{42}$};
+ 	\draw [arrows = {-triangle 45}] (25p) -- (3p) node [midway, above, sloped] {$\color{olive}\vec{r}_{23}, \color{violet}\vec{r}_{53}$};
+ 	\draw [arrows = {-triangle 45}] (0, 0) -- (3p) node [midway, above, sloped] {$\color{red}\vec{r}_{13}$};
+ 	
+ 	\draw [fill] (0, 0) circle [radius = 0.05] node [below right] {$\color{red}1, \color{blue}4$};
+ 	\draw [fill] (25p) circle [radius = 0.05] node [below right] {$\color{olive}2, \color{violet}5$};
+ 	\draw [fill] (3p) circle [radius = 0.05] node [above right] {$3$};
+ 	
+ 	\end{tikzpicture}
+    \caption{Система матеріальних точок}
+    \label{fig:scheme}
+\end{figure}
+ 	
+ 	Рух кожної з точок був розбитий на прості рухи (трансляційний \textit{T} та ротаційний \textit{R}). Для кожного з простих типів руху було введено свій окремий референс-фрейм. Таким чином рух системи визначається як композиція перетворень кожного з референс-фреймів відносно один одного. Структура референс-фреймів характеризується вкладеністю. Кожному референс-фрейму відповідає початок його координат позначений в нашому випадку цифрами.
+ 	
+ 	\begin{equation}
+ 	\nonumber
+ 	1 \xrightarrow[\text{$\phi_{14}$}]{\text{R}} 4 \xrightarrow[\text{$\vec{r}_{42}$}]{\text{T}} 2 \xrightarrow[\text{$\phi_{25}$}]{\text{R}} 5 \xrightarrow[\text{$\vec{r}_{53}$}]{\text{T}} 3
+ 	\end{equation}
+ 	
+ 	\section*{Виведення рівняння швидкості}
+ 	Основна мета знайти швидкість точки 3 відносно нашого базового референс-фрейму $(1x_1y_1z_1)$.
+ 	
+ 	\begin{equation}
+ 	\nonumber
+ 	\frac {d \vec{r}_{13}} {d t} - ?
+ 	\end{equation}
+ 	
+ 	Запишемо залежності між радіус-векторами та їхніми координатами відносно референс-фреймів.
+
+ 	\begin{align*}
+ 	\vec{r}_{12} = \vec{r}_{42}  & & 	\vec{r}_{12} = x_{12} \hat{\imath}_{1} + y_{12} \hat{\jmath}_{1} & & \vec{r}_{42} = x_{42} \hat{\imath}_{4} + y_{42} \hat{\jmath}_{4} \\
+ 	\vec{r}_{23} = \vec{r}_{53} & &  \vec{r}_{23} = x_{23} \hat{\imath}_{2} + y_{23} \hat{\jmath}_{2} & &  \vec{r}_{53} = x_{53} \hat{\imath}_{5} + y_{53} \hat{\jmath}_{5}\\	
+ 	\end{align*}
+ 	\begin{gather}
+ 	\label {eq:r13_vector}
+ 	\vec{r}_{13} = \vec{r}_{12} + \vec{r}_{23} = \vec{r}_{42} + \vec{r}_{53} 
+ 	\end{gather}
+ 	
+ 	Підставимо в рівняння \ref{eq:r13_vector} попередні залежності і отримаємо рівняння радіус вектора точки 3 відносно рухомих  референс-фреймів.
+ 	\begin{gather}
+ 	 \label {eq:r13_xy}
+ 	 \vec{r}_{13} = x_{42} \hat{\imath}_{4} + y_{42} \hat{\jmath}_{4} + x_{53} \hat{\imath}_{5} + y_{53} \hat{\jmath}_{5}
+ 	\end{gather}
+ 	
+ 	Виведемо залежності одиничних веторів з попереднього рівняння відносно одиничних векторів базового референс-фрейму.
+
+ 	\begin{gather}
+ 	\hat{\imath}_{4} = 	\hat{\imath}_{1} cos (\phi_{14}) + \hat{\jmath}_{1} sin (\phi_{14}) \label{eq:i4} \\
+ 	\hat{\jmath}_{4} = -\hat{\imath}_{1} sin (\phi_{14}) + \hat{\jmath}_{1} cos (\phi_{14}) \label{eq:j4} \\
+ 	\nonumber \\
+ 	\hat{\imath}_{5} = 	\hat{\imath}_{1} cos (\phi_{14} + \phi_{25}) + \hat{\jmath}_{1} sin (\phi_{14} + \phi_{25}) \label{eq:i5} \\
+ 	\hat{\jmath}_{5} = -\hat{\imath}_{1} sin (\phi_{14} + \phi_{25}) + \hat{\jmath}_{1} cos (\phi_{14} + \phi_{25}) \label{eq:j5}
+ 	\end{gather}
+ 	Для того щоб в подальшому можна було використати вищенаведені залежності слід знайти їхні похідні по часу. Похідні по часу рухомих одиничних векторів є ключовим в даному підході, і саме ці похідні по часу генерують найбільш неочевидні, нетривіальні результати в залежностях швидкостей та пришвидшень. Тому будемо проводити диференціювання повільно та покроково, пам'ятаючи про залежності \ref{eq:di0} та \ref{eq:dj0} та про правила диференціювання складеної функції і добутку функцій.
+ 	
+ 	\begin{gather}
+ 	\frac {d \hat{\imath}_{4}} {dt} = \frac{d\hat{\imath}_{1}} {dt} cos (\phi_{14}) - \hat{\imath}_{1} \dot{\phi}_{14}  sin (\phi_{14})+\frac{d\hat{\jmath}_{1}} {dt} sin (\phi_{14})+ \hat{\jmath}_{1} \dot{\phi}_{14}  cos (\phi_{14}) \nonumber\\
+ 	\frac {d \hat{\imath}_{4}} {dt} =\dot{\phi}_{14} (-\hat{\imath}_{1} sin (\phi_{14}) + \hat{\jmath}_{1} cos (\phi_{14})) \label{eq:di4cos}\\
+ 	\nonumber\\
+ 	\frac {d \hat{\jmath}_{4}} {dt} = - \frac{d\hat{\imath}_{1}} {dt} sin (\phi_{14}) - \hat{\imath}_{1} \dot{\phi}_{14}  cos (\phi_{14})+\frac{d\hat{\jmath}_{1}} {dt} cos (\phi_{14})- \hat{\jmath}_{1} \dot{\phi}_{14}  sin (\phi_{14}) \nonumber\\
+ 	\frac {d \hat{\jmath}_{4}} {dt} = - \dot{\phi}_{14} (\hat{\imath}_{1} cos (\phi_{14}) + \hat{\jmath}_{1} sin (\phi_{14})) \label{eq:dj4cos}
+ 	\end{gather}	
+ 	\begin{multline*}
+ 	\frac {d \hat{\imath}_{5}} {dt} = \frac{d\hat{\imath}_{1}} {dt} cos (\phi_{14} + \phi_{25}) - \hat{\imath}_{1} (\dot{\phi}_{14} + \dot{\phi}_{25}) sin (\phi_{14}+ \phi_{25})+\\+\frac{d\hat{\jmath}_{1}} {dt} sin (\phi_{14} + \phi_{25})+ \hat{\jmath}_{1} (\dot{\phi}_{14}+\dot{\phi}_{25})  cos (\phi_{14} + \phi_{25})
+ 	\end{multline*}
+ 	\begin{gather}
+ 	\label{eq:di5cos}
+ 	\frac {d \hat{\imath}_{5}} {dt} =(\dot{\phi}_{14} + \dot{\phi}_{25}) (-\hat{\imath}_{1} sin (\phi_{14}+\phi_{25}) + \hat{\jmath}_{1} cos (\phi_{14}+\phi_{25}))
+ 	\end{gather}
+ 	\begin{multline*}
+ 	\frac {d \hat{\jmath}_{5}} {dt} = - \frac{d\hat{\imath}_{1}} {dt} sin (\phi_{14} + \phi_{25}) - \hat{\imath}_{1} (\dot{\phi}_{14} + \dot{\phi}_{25})  cos (\phi_{14} + \phi_{25})+\\+\frac{d\hat{\jmath}_{1}} {dt} cos (\phi_{14} + \phi_{25})- \hat{\jmath}_{1} (\dot{\phi}_{14} + \dot{\phi}_{25})  sin (\phi_{14} + \phi_{25})
+ 	\end{multline*}
+ 	\begin{gather}
+ 	\label{eq:dj5cos}
+ 	\frac {d \hat{\jmath}_{5}} {dt} =-(\dot{\phi}_{14} + \dot{\phi}_{25}) (\hat{\imath}_{1} cos (\phi_{14}+\phi_{25}) + \hat{\jmath}_{1} sin (\phi_{14}+\phi_{25}))
+ 	\end{gather}
+ 	
+ 	Підставляючи в залежності \ref{eq:di4cos}, \ref{eq:dj4cos}, \ref{eq:di5cos}, \ref{eq:dj5cos} співвідношення \ref{eq:j4}, \ref{eq:i4}, \ref{eq:j5}, \ref{eq:i5} відповідно, отримаємо:
+ 	\begin{gather}
+ 	\frac {d \hat{\imath}_{4}} {dt} =\dot{\phi}_{14} \hat{\jmath}_{4}\\
+ 	\frac {d \hat{\jmath}_{4}} {dt} = - \dot{\phi}_{14} \hat{\imath}_{4}\\
+ 	\frac {d \hat{\imath}_{5}} {dt} =(\dot{\phi}_{14} + \dot{\phi}_{25}) \hat{\jmath}_{5}\\
+ 	\frac {d \hat{\jmath}_{5}} {dt} =-(\dot{\phi}_{14} + \dot{\phi}_{25}) \hat{\imath}_{5}
+ 	\end{gather}
+ 	
+ 	Залишилося провести диференціювання рівняння \ref {eq:r13_xy} та підставити вищенаведені залежності.
+ 	\begin{gather*}
+ 	\frac{d\vec{r}_{13}}{d t} = \frac{d(x_{42} \hat{\imath}_{4} + y_{42} \hat{\jmath}_{4} + x_{53} \hat{\imath}_{5} + y_{53} \hat{\jmath}_{5})}{d t} \\
+ 	\\
+ 	\frac{d\vec{r}_{13}}{d t} = \dot{x}_{42} \hat{\imath}_{4} + x_{42} \frac {d \hat{\imath}_{4}} {dt} + \dot{y}_{42} \hat{\jmath}_{4} + y_{42} \frac {d \hat{\jmath}_{4}} {dt} + \dot{x}_{53} \hat{\imath}_{5} + x_{53} \frac {d \hat{\imath}_{5}} {dt} + \dot{y}_{53} \hat{\jmath}_{5} + y_{53} \frac {d \hat{\jmath}_{5}} {dt}
+ 	\end{gather*}
+ 	
+ 	\begin{multline} 
+ 	\label {eq:full_velocity}	
+ 		\frac{d\vec{r}_{13}}{d t} = (\dot{x}_{42} \hat{\imath}_{4} + \dot{y}_{42} \hat{\jmath}_{4}) + (\dot{x}_{53} \hat{\imath}_{5} + \dot{y}_{53} \hat{\jmath}_{5}) + (x_{42} \dot{\phi}_{14} \hat{\jmath}_{4} - y_{42} \dot{\phi}_{14} \hat{\imath}_{4}) +\\+  (x_{53} \dot{\phi}_{14} \hat{\jmath}_{5} -  y_{53} \dot{\phi}_{14} \hat{\imath}_{5}) + (x_{53} \dot{\phi}_{25} \hat{\jmath}_{5} -  y_{53} \dot{\phi}_{25} \hat{\imath}_{5})
+ 	\end{multline}
+ 	
+ 	Рівняння \ref{eq:full_velocity} є шуканою залежністю в його повній і конкретизованій формі відносно нашої задачі. Окрім цього його можна записати в більш короткій та загальній формі. Для цього необхідно провести деякі нетривіальні заходи.
+ 	
+ 	Визначимо вектори $\vec{\omega}_{14}$ та $\vec{\omega}_{25}$ наступним чином:
+ 	\begin{gather}
+ 	\vec{\omega}_{14} = 0\hat{\imath}_{4} +0\hat{\jmath}_{4} + \dot{\phi}_{14} \hat{k}_4 = 0\hat{\imath}_{5} +0\hat{\jmath}_{5} + \dot{\phi}_{14} \hat{k}_5 \\
+ 	\vec{\omega}_{25} = 0\hat{\imath}_{5} +0\hat{\jmath}_{5} + \dot{\phi}_{25} \hat{k}_5
+ 	\end{gather}
+ 	
+ 	Вищенаведені вектори називаються кутовими швидкостями. Застосуймо тепер операцію векторного добутку між кутовими швидкостями та радіус-векторами знайденими раніше за правилом \ref{eq:crossprod}. Також слід зауважити, що оскільки ми розглядаємо плоску задачу, то $\hat{k}{4} = \hat{k}{5}$.
+ 	\begin{gather}
+ 	\vec{\omega}_{14} \times \vec{r}_{42} = \begin {vmatrix}
+ 	\hat{\imath}_{4} & \hat{\jmath}_{4} & \hat{k}_{4} \\
+ 	0 & 0 & \dot{\phi}_{14} \\
+ 	x_{42} & y_{42} & 0
+    \end{vmatrix} = x_{42} \dot{\phi}_{14} \hat{\jmath}_{4} - y_{42} \dot{\phi}_{14} \hat{\imath}_{4} \label{eq:w14r42}\\ 
+     \vec{\omega}_{14} \times \vec{r}_{53} = \begin {vmatrix}
+ \hat{\imath}_{5} & \hat{\jmath}_{5} & \hat{k}_{5} \\
+ 0 & 0 & \dot{\phi}_{14} \\
+ x_{53} & y_{53} & 0
+ \end{vmatrix} = x_{53} \dot{\phi}_{14} \hat{\jmath}_{5} - y_{53} \dot{\phi}_{14} \hat{\imath}_{5} \label{eq:w14r53}\\
+    \vec{\omega}_{25} \times \vec{r}_{53} = \begin {vmatrix}
+ \hat{\imath}_{5} & \hat{\jmath}_{5} & \hat{k}_{5} \\
+ 0 & 0 & \dot{\phi}_{25} \\
+ x_{53} & y_{53} & 0
+ \end{vmatrix} = x_{53} \dot{\phi}_{25} \hat{\jmath}_{5} - y_{53} \dot{\phi}_{25} \hat{\imath}_{5} \label{eq:w25r53}
+ 	\end{gather}
+ 	
+ 	Підставляючи залежності \ref{eq:w14r42}, \ref{eq:w14r53} та \ref{eq:w25r53} в \ref{eq:full_velocity} отримаємо остаточне рівняння швидкості точки 3 відносно базового референс-фрейму.
+ 	\begin{multline} 
+ 	\label {eq:velocity_col}
+ 		\frac{d\vec{r}_{13}}{d t} = (\dot{x}_{42} \hat{\imath}_{4} + \dot{y}_{42} \hat{\jmath}_{4}) + (\dot{x}_{53} \hat{\imath}_{5} + \dot{y}_{53} \hat{\jmath}_{5}) +\\+ \vec{\omega}_{14} \times \vec{r}_{42} +  \vec{\omega}_{14} \times \vec{r}_{53} + \vec{\omega}_{25} \times \vec{r}_{53}
+ 	\end{multline}
+ 	
+ 	\section*{Спрощення та узагальнення рівняння швидкості}
+ 	
+ 	Введемо визначення для деяких термів з рівності \ref{eq:velocity_col}.
+ 	\begin{gather}
+ 	\vec{v}_{42} = \dot{x}_{42} \hat{\imath}_{4} + \dot{y}_{42} \hat{\jmath}_{4}\\
+ 	\vec{v}_{53} = \dot{x}_{53} \hat{\imath}_{5} + \dot{y}_{53} \hat{\jmath}_{5}\\
+ 	\vec{\omega}_{15} = \vec{\omega}_{14} + \vec{\omega}_{25}
+ 	\end{gather}
+ 	
+ 	Перепишемо рівняння швидкості підставляючи вищенаведені заміни, та групуючи значення.
+ 		\begin{gather} 
+ 		\label {eq:velocity}
+ 		\frac{d\vec{r}_{13}}{d t} = (\vec{v}_{42} + \vec{\omega}_{14} \times \vec{r}_{42}) + \vec{v}_{53} +  \vec{\omega}_{15} \times \vec{r}_{53}
+ 		\end{gather}
+ 	Кожен з термів з попереднього рівняння має свою назву, і саме в такому виді представленний в більшості літератури. Терм $\vec{v}_{42} + \vec{\omega}_{14} \times \vec{r}_{42}$ називається \textit{переносною швидкістю}. Терм $\vec{v}_{53}$ називається \textit{відносною швидкістю}, або швидкістю точки відносно рухомого фрейму. Терм $\vec{\omega}_{15} \times \vec{r}_{53}$ не має особливої назви, а просто зазначається, що ця швидкість пов'язана з обертанням рухомого фрейму.
+ 	
+ 	\section*{Визначення рівняння пришвидшення}
+ 	Продиференціюємо наше отримане рівняння швидкості другий раз. Таким чином отримаємо рівняння пришвидшення.
+ 	\begin{gather} 
+ 	\label {eq:acc_col}
+ 		\frac{d^2\vec{r}_{13}}{d t^2} = \frac{d(\vec{v}_{42} + \vec{\omega}_{14} \times \vec{r}_{42} + \vec{v}_{53} +  \vec{\omega}_{15} \times \vec{r}_{53})}{d t}
+ 	\end{gather}
+ 	
+ 	Для зручності продиференціюємо рівність по частинах, пам'ятаючи про про похідні по часу одиничних ортів, зазначених в попередніх розділах.
+ 	\begin{gather*} 
+ 	\frac{d\vec{v}_{42}}{d t} = \frac{d(\dot{x}_{42} \hat{\imath}_{4} + \dot{y}_{42} \hat{\jmath}_{4})}{d t} = \ddot{x}_{42} \hat{\imath}_{4} + \dot{x}_{42} \dot{\phi}_{14} \hat{\jmath}_{4} + \ddot{y}_{42} \hat{\jmath}_{4} - \dot{y}_{42} \dot{\phi}_{14} \hat{\imath}_{4}\\
+ 	\frac{d\vec{v}_{42}}{d t} = \ddot{x}_{42} \hat{\imath}_{4} + \ddot{y}_{42} \hat{\jmath}_{4} + \vec{\omega}_{14} \times \vec{v}_{42}\\
+ 	\\
+ 	\frac{d\vec{v}_{53}}{d t} = \frac{d(\dot{x}_{53} \hat{\imath}_{5} + \dot{y}_{53} \hat{\jmath}_{5})} {d t} = \ddot{x}_{53} \hat{\imath}_{5} + \dot{x}_{53} \dot{\phi}_{14} \hat{\jmath}_{5}+ \dot{x}_{53} \dot{\phi}_{25} \hat{\jmath}_{5} + \ddot{y}_{53} \hat{\jmath}_{5} - \dot{y}_{53} \dot{\phi}_{14} \hat{\imath}_{5} - \dot{y}_{53} \dot{\phi}_{25} \hat{\imath}_{5}\\
+ 	\frac{d\vec{v}_{53}}{d t} = \ddot{x}_{53} \hat{\imath}_{5} + \ddot{y}_{53} \hat{\jmath}_{5} + \vec{\omega}_{14} \times \vec{v}_{53} + \vec{\omega}_{25} \times \vec{v}_{53}\\
+ 	\\
+ 	\end{gather*}
+ 	\begin{multline*}
+ 	\frac{d(\vec{\omega}_{14} \times \vec{r}_{42})}{d t} = \frac{d(x_{42} \dot{\phi}_{14} \hat{\jmath}_{4} - y_{42} \dot{\phi}_{14} \hat{\imath}_{4})}{d t} = \dot{x}_{42} \dot{\phi}_{14} \hat{\jmath}_4 + x_{42} \ddot{\phi}_{14} \hat{\jmath}_4 -  x_{42} \dot{\phi}_{14} \dot{\phi}_{14} \hat{\imath}_4 - \\ - \dot{y}_{42} \dot{\phi}_{14} \hat{\imath}_4 - {y}_{42} \ddot{\phi}_{14} \hat{\imath}_4 - {y}_{42} \dot{\phi}_{14} \dot{\phi}_{14} \hat{\jmath}_4 =(x_{42} \ddot{\phi}_{14} \hat{\jmath}_4 - {y}_{42} \ddot{\phi}_{14} \hat{\imath}_4) + (\dot{x}_{42} \dot{\phi}_{14} \hat{\jmath}_4 - \dot{y}_{42} \dot{\phi}_{14} \hat{\imath}_4) + \\ + (x_{42} \dot{\phi}_{14} \dot{\phi}_{14} \hat{\imath}_4 - {y}_{42} \dot{\phi}_{14} \dot{\phi}_{14} \hat{\jmath}_4)
+ 	\end{multline*}
+ 	\begin{gather*}
+ 	\frac{d(\vec{\omega}_{14} \times \vec{r}_{42})}{d t} = \vec{\epsilon}_{14} \times \vec{r}_{42} + \vec{\omega}_{14} \times \vec{v}_{42} + \vec{\omega}_{14} \times \vec{\omega}_{14} \times \vec{r}_{42}\\
+ 	\frac{d(\vec{\omega}_{14} \times \vec{r}_{53})}{d t} = \vec{\varepsilon}_{14} \times \vec{r}_{53}+\vec{\omega}_{14} \times \frac{d \vec{r}_{53}}{d t} \\
+ 	\frac{d(\vec{\omega}_{14} \times \vec{r}_{53})}{d t}= \vec{\varepsilon}_{14} \times \vec{r}_{53} + \vec{\omega}_{14} \times \vec{v}_{53} + \vec{\omega}_{14} \times \vec{\omega}_{14}  \times \vec{r}_{53} + \vec{\omega}_{14} \times \vec{\omega}_{25}  \times \vec{r}_{53}\\
+ 	\frac{d(\vec{\omega}_{25} \times \vec{r}_{53})}{d t} = \vec{\varepsilon}_{25} \times \vec{r}_{53} + \vec{\omega}_{25} \times \vec{v}_{53} + \vec{\omega}_{14} \times \vec{\omega}_{25}  \times \vec{r}_{53} + \vec{\omega}_{25} \times \vec{\omega}_{25}  \times \vec{r}_{53}
+ 	\end{gather*}
+ 	Зберемо отримані частини продиференційованого рівняння разом, зробивши заміну $\ddot{x}_{42} \hat{\imath}_{4} + \ddot{y}_{42} \hat{\jmath}_{4} = \vec{a}_{42}, \ddot{x}_{53} \hat{\imath}_{5} + \ddot{y}_{53} \hat{\jmath}_{5} = \vec{a}_{53}$.
+ 	\begin{multline}
+ 	\frac{d^2\vec{r}_{13}}{d t^2} = \vec{a}_{42} + \vec{\omega}_{14} \times \vec{v}_{42} + \vec{a}_{53} + \vec{\omega}_{14} \times \vec{v}_{53} + \vec{\omega}_{25} \times \vec{v}_{53} + \vec{\varepsilon}_{14} \times \vec{r}_{42} + \\+ \vec{\omega}_{14} \times \vec{v}_{42} + \vec{\omega}_{14} \times \vec{\omega}_{14} \times \vec{r}_{42} + \vec{\varepsilon}_{14} \times \vec{r}_{53} + \vec{\omega}_{14} \times \vec{v}_{53} + \\ + \vec{\omega}_{14} \times \vec{\omega}_{14}  \times \vec{r}_{53} + \vec{\omega}_{14} \times \vec{\omega}_{25}  \times \vec{r}_{53} + \vec{\varepsilon}_{25} \times \vec{r}_{53} + \vec{\omega}_{25} \times \vec{v}_{53} + \\ + \vec{\omega}_{14} \times \vec{\omega}_{25}  \times \vec{r}_{53} + \vec{\omega}_{25} \times \vec{\omega}_{25}  \times \vec{r}_{53}
+ 	\end{multline}
+ 	\begin{multline}
+ 	\frac{d^2\vec{r}_{13}}{d t^2} =  \vec{a}_{42} + \vec{a}_{53} + 2 \vec{\omega}_{14} \times \vec{v}_{42} + 2 \vec{\omega}_{14} \times \vec{v}_{53} + 2 \vec{\omega}_{25} \times \vec{v}_{53} + \vec{\varepsilon}_{14} \times \vec{r}_{42} + \vec{\varepsilon}_{14} \times \vec{r}_{53} + \\+ \vec{\varepsilon}_{25} \times \vec{r}_{53} + \vec{\omega}_{14} \times \vec{\omega}_{14} \times \vec{r}_{42} + (\vec{\omega}_{14} \times \vec{\omega}_{14}  \times \vec{r}_{53} + \vec{\omega}_{14} \times \vec{\omega}_{25}  \times \vec{r}_{53} + \\ + \vec{\omega}_{14} \times \vec{\omega}_{25}  \times \vec{r}_{53} + \vec{\omega}_{25} \times \vec{\omega}_{25}  \times \vec{r}_{53})
+ 	\end{multline}
+ 	
+ 	Перепишемо рівняння в термінах $\vec{\omega}_{15} = \vec{\omega}_{14} + \vec{\omega}_{25},  \vec{\varepsilon}_{15} =  \vec{\varepsilon}_{14} +  \vec{\epsilon}_{25}$
+ 	\begin{multline}
+ 	\label {eq:acc_fully}
+ 	\frac{d^2\vec{r}_{13}}{d t^2} = \vec{a}_{42} + \vec{a}_{53} + 2 \vec{\omega}_{14} \times \vec{v}_{42} + 2 \vec{\omega}_{15} \times \vec{v}_{53} + \vec{\varepsilon}_{14} \times \vec{r}_{42} + \vec{\varepsilon}_{15} \times \vec{r}_{53} + \\ + \vec{\omega}_{14} \times \vec{\omega}_{14} \times \vec{r}_{42} + \vec{\omega}_{15} \times \vec{\omega}_{15} \times \times \vec{r}_{53}
+ 	\end{multline}
+ 	Рівність \ref{eq:acc_fully} є остаточним рівнянням пришвидшення досліджуваної системи матеріальних точок в визначених нами референс-фреймах.
+ \end{document}
