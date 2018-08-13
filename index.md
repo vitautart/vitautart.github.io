@@ -1,12 +1,12 @@
-### Статті-пісочниці
+### Articles
 
 * [Ортобазисний підхід визначення кінематики матеріальної точки на площині](https://github.com/vitautart/vitautart.github.io/blob/master/publication/kinematics/orthobasis_kinematic_2d/orthobasis_kinematic.pdf)
 
-### Розробки
-* [Тестова нейронна мережа](https://github.com/vitautart/bnn)
+### Repository
+* [Testing neuron network](https://github.com/vitautart/bnn)
 
 
-### Корисні посилання
+### Links
 
 * [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 
@@ -14,5 +14,5 @@
 
 * [IBM Quantum Computing](https://www.research.ibm.com/ibm-q/)
 
-### Про автора
-Віталій Тартачний (Vitalii Tartachnyi aka vitautart) - кріейтор різноманітних, справжніх та уявних штуковин. Область інтересів (намагається триматися фронтиру сучасності) - лінійна алгебра, класична та квантова механіка, механотроніка, ші, динамічні системи, настільний теніс, розробка та теорія комп'ютерних ігор.
+### About me
+Vitalii Tartachnyi (Віталій Тартачний aka vitautart) - engineer, developer.
